@@ -1,0 +1,22 @@
+# Build outputs
+[Bb]in/
+[Oo]bj/
+
+# IDE and Editor files
+.vs/
+.idea/
+*.user
+*.userosscache
+*.suo
+*.userprefs
+*.sln.docstates
+
+# OS files
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+.DS_Store
+
+# Local settings / user settings
+.vscode/settings.json
+.vscode/tasks.json.user
