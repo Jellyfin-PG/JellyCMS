@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JellyCMS — Modular Page Builder for Jellyfin 10.11.x</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    }
+
+    body {
+      background-color: #000000;
+      color: #ffffff;
+      overflow-x: hidden;
+      background-image: 
+        linear-gradient(to right, #111111 1px, transparent 1px),
+        linear-gradient(to bottom, #111111 1px, transparent 1px);
+      background-size: 40px 40px;
+    }
+
+    header {
+      border-bottom: 1px solid #1c1c1c;
+      background-color: rgba(0, 0, 0, 0.8);
+      backdrop-filter: blur(12px);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .nav-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      height: 70px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 24px;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 700;
+      font-size: 20px;
+      letter-spacing: -0.5px;
+    }
+
+    .logo-square {
+      width: 16px;
+      height: 16px;
+      background-color: #ffffff;
+      border-radius: 3px;
+    }
+
+    .version-tag {
+      background-color: #111111;
+      border: 1px solid #222222;
+      padding: 4px 10px;
+      border-radius: 20px;
+      font-size: 11px;
+      color: #888888;
+    }
+
+    .hero {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 100px 24px 60px 24px;
+      text-align: center;
+    }
+
+    .hero h2 {
+      font-size: 56px;
+      font-weight: 800;
+      letter-spacing: -2px;
+      line-height: 1.1;
+      margin-bottom: 24px;
+    }
+
+    .hero p {
+      font-size: 18px;
+      color: #888888;
+      max-width: 600px;
+      margin: 0 auto 40px auto;
+      line-height: 1.6;
+    }
+
+    .interactive-demo {
+      max-width: 1000px;
+      margin: 0 auto 100px auto;
+      border: 2px solid #222222;
+      border-radius: 12px;
+      background-color: #050505;
+      display: flex;
+      height: 480px;
+      overflow: hidden;
+      box-shadow: 0 40px 80px rgba(0,0,0,0.7);
+    }
+
+    .demo-sidebar {
+      width: 240px;
+      background-color: #090909;
+      border-right: 2px solid #1c1c1c;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .demo-title {
+      font-size: 11px;
+      color: #444444;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 8px;
+    }
+
+    .draggable-node {
+      background-color: #111111;
+      border: 1.5px solid #222222;
+      border-radius: 6px;
+      padding: 12px;
+      font-size: 13px;
+      color: #aaaaaa;
+      cursor: grab;
+      user-select: none;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .draggable-node:hover {
+      border-color: #444444;
+      color: #ffffff;
+    }
+
+    .demo-canvas {
+      flex: 1;
+      padding: 24px;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      background-color: #000000;
+    }
+
+    .canvas-placeholder {
+      border: 2px dashed #222222;
+      border-radius: 8px;
+      padding: 24px;
+      color: #444444;
+      font-size: 14px;
+      text-align: center;
+    }
+
+    .module-instance {
+      background-color: #111111;
+      border: 2px solid #333333;
+      border-radius: 8px;
+      padding: 20px;
+      animation: popIn 0.2s ease;
+    }
+
+    .module-instance.stark-white {
+      background-color: #ffffff;
+      color: #000000;
+      border-color: #ffffff;
+      position: relative;
+    }
+
+    .stark-white::before, .stark-white::after {
+      content: ''; position: absolute; width: 6px; height: 6px; background: #ffffff; border: 1px solid #000000;
+    }
+    .stark-white::before { top: -4px; left: -4px; }
+    .stark-white::after { bottom: -4px; right: -4px; }
+
+    .section-title {
+      text-align: center;
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: #666666;
+      margin-bottom: 48px;
+    }
+
+    .grid-section {
+      max-width: 1200px;
+      margin: 0 auto 100px auto;
+      padding: 0 24px;
+    }
+
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 24px;
+    }
+
+    .feature-card {
+      background-color: #090909;
+      border: 1px solid #1c1c1c;
+      border-radius: 8px;
+      padding: 32px;
+      transition: border-color 0.3s ease;
+    }
+
+    .feature-card:hover {
+      border-color: #333333;
+    }
+
+    .feature-card h3 {
+      font-size: 18px;
+      margin-bottom: 12px;
+      font-weight: 600;
+    }
+
+    .feature-card p {
+      font-size: 14px;
+      color: #666666;
+      line-height: 1.6;
+    }
+
+    .support-strip {
+      background-color: #090909;
+      border-top: 1px solid #1c1c1c;
+      border-bottom: 1px solid #1c1c1c;
+      padding: 40px 24px;
+      text-align: center;
+      margin-bottom: 100px;
+    }
+
+    .support-metrics {
+      display: flex;
+      justify-content: center;
+      gap: 80px;
+      max-width: 1200px;
+      margin: 0 auto;
+      flex-wrap: wrap;
+    }
+
+    .metric-item h4 {
+      font-size: 24px;
+      font-weight: 700;
+      color: #ffffff;
+      margin-bottom: 4px;
+    }
+
+    .metric-item p {
+      font-size: 12px;
+      color: #444444;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .line-sk { height: 8px; background-color: currentColor; opacity: 0.2; border-radius: 4px; margin-bottom: 8px; }
+    .line-sk.w-70 { width: 70%; }
+    .line-sk.w-40 { width: 40%; }
+
+    @keyframes popIn {
+      from { opacity: 0; transform: scale(0.98); }
+      to { opacity: 1; transform: scale(1); }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="nav-container">
+      <div class="logo">
+        <div class="logo-square"></div>
+        <span>JellyCMS</span>
+      </div>
+      <div class="version-tag">Jellyfin v10.11.x Platform Support</div>
+    </div>
+  </header>
+
+  <section class="hero">
+    <h2>Build Custom Interfaces<br>Inside Jellyfin.</h2>
+    <p>A native layout engine engineered directly for Jellyfin 10.11.x server deployments. Add elements, inject components, and personalize your server front-end natively.</p>
+  </section>
+
+  <section class="grid-section">
+    <div class="section-title">Live Architecture Sandbox</div>
+    <div class="interactive-demo">
+      
+      <div class="demo-sidebar">
+        <div class="demo-title">UI Modules</div>
+        <div class="draggable-node" draggable="true" data-type="hero">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/></svg>
+          Banner Hero
+        </div>
+        <div class="draggable-node" draggable="true" data-type="carousel">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 12h20M5 5l-3 7 3 7M19 5l3 7-3 7"/></svg>
+          Media Slider
+        </div>
+        <div class="draggable-node" draggable="true" data-type="stark">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/></svg>
+          Active Feature Accent
+        </div>
+      </div>
+
+      <div class="demo-canvas" id="drop-viewport">
+        <div class="canvas-placeholder" id="placeholder-text">Drag modules from the panel into this canvas area to experience the build system</div>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="support-strip">
+    <div class="support-metrics">
+      <div class="metric-item">
+        <h4>10.11.x Native</h4>
+        <p>Target Compatibility</p>
+      </div>
+      <div class="metric-item">
+        <h4>Zero Overhead</h4>
+        <p>Vanilla JS Architecture</p>
+      </div>
+      <div class="metric-item">
+        <h4>Vue-Free</h4>
+        <p>Direct C# Web API Hooks</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="grid-section">
+    <div class="section-title">Functional System Breakdown</div>
+    <div class="features-grid">
+      
+      <div class="feature-card">
+        <h3>Native Injection</h3>
+        <p>Integrates straight into Jellyfin's web asset array. Custom pages inherit system authentication, and user context.</p>
+      </div>
+
+      <div class="feature-card">
+        <h3>Dynamic Data Blocks</h3>
+        <p>Bind modular page rows straight to existing media libraries, collections, collections playlists, or external server status monitors.</p>
+      </div>
+
+      <div class="feature-card">
+        <h3>Asynchronous State</h3>
+        <p>Designed using reactive structural grids ensuring all client page component rendering finishes instantly without media stream buffering interference.</p>
+      </div>
+
+    </div>
+  </section>
+
+  <script>
+    const draggableNodes = document.querySelectorAll('.draggable-node');
+    const viewport = document.getElementById('drop-viewport');
+    const placeholder = document.getElementById('placeholder-text');
+
+    let processingType = null;
+
+    draggableNodes.forEach(node => {
+      node.addEventListener('dragstart', (e) => {
+        processingType = node.getAttribute('data-type');
+        e.dataTransfer.setData('text/plain', processingType);
+      });
+    });
+
+    viewport.addEventListener('dragover', (e) => {
+      e.preventDefault();
+      viewport.style.borderColor = '#ffffff';
+    });
+
+    viewport.addEventListener('dragleave', () => {
+      viewport.style.borderColor = '#222222';
+    });
+
+    viewport.addEventListener('drop', (e) => {
+      e.preventDefault();
+      viewport.style.borderColor = '#222222';
+      
+      if(placeholder) {
+        placeholder.style.display = 'none';
+      }
+
+      const generatedElement = document.createElement('div');
+      generatedElement.classList.add('module-instance');
+
+      if (processingType === 'hero') {
+        generatedElement.innerHTML = `
+          <div class="line-sk" style="width: 30%;"></div>
+          <div class="line-sk w-70"></div>
+          <div class="line-sk w-40"></div>
+        `;
+      } else if (processingType === 'carousel') {
+        generatedElement.innerHTML = `
+          <div style="display: flex; gap: 12px; margin-top: 8px;">
+            <div style="flex:1; height:60px; border:1px dashed #333; border-radius:4px;"></div>
+            <div style="flex:1; height:60px; border:1px dashed #333; border-radius:4px;"></div>
+            <div style="flex:1; height:60px; border:1px dashed #333; border-radius:4px;"></div>
+          </div>
+        `;
+      } else if (processingType === 'stark') {
+        generatedElement.classList.add('stark-white');
+        generatedElement.innerHTML = `
+          <div class="line-sk" style="width: 50%;"></div>
+          <div class="line-sk w-70" style="opacity: 0.5;"></div>
+        `;
+      }
+
+      viewport.appendChild(generatedElement);
+    });
+  </script>
+</body>
+</html>
