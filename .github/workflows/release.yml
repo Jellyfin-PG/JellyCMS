@@ -1,0 +1,87 @@
+name: Build & Release
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '9.0.x'
+
+      - name: Restore dependencies
+        run: dotnet restore
+
+      - name: Build
+        run: dotnet build --configuration Release --no-restore
+
+      - name: Publish
+        run: dotnet publish --configuration Release --no-build --output ./publish
+
+      - name: Get version from csproj
+        id: version
+        run: |
+          VERSION=$(sed -n 's/.*<Version>\(.*\)<\/Version>.*/\1/p' JellyCMS.csproj | xargs)
+          echo "VERSION=${VERSION}" >> $GITHUB_OUTPUT
+
+      - name: Zip release artifacts
+        run: |
+          cd publish
+          zip -j ../JellyCMS_${{ steps.version.outputs.VERSION }}.zip JellyCMS.dll
+
+      - name: Compute checksums
+        id: checksum
+        run: |
+          echo "MD5=$(md5sum JellyCMS_${{ steps.version.outputs.VERSION }}.zip | awk '{print $1}')" >> $GITHUB_OUTPUT
+          echo "SHA256=$(sha256sum JellyCMS_${{ steps.version.outputs.VERSION }}.zip | awk '{print $1}')" >> $GITHUB_OUTPUT
+
+      - name: Get previous tag
+        id: previoustag
+        run: |
+          PREV=$(git tag --sort=-version:refname | grep -v "^${{ github.ref_name }}$" | head -n1)
+          echo "PREV=${PREV}" >> $GITHUB_OUTPUT
+
+      - name: Generate changelog
+        id: changelog
+        run: |
+          if [ -n "${{ steps.previoustag.outputs.PREV }}" ]; then
+            LOG=$(git log ${{ steps.previoustag.outputs.PREV }}..${{ github.ref_name }} --pretty=format:"- %s" --no-merges)
+          else
+            LOG=$(git log --pretty=format:"- %s" --no-merges)
+          fi
+          echo "LOG<<EOF" >> $GITHUB_OUTPUT
+          echo "$LOG" >> $GITHUB_OUTPUT
+          echo "EOF" >> $GITHUB_OUTPUT
+
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: ${{ github.ref_name }}
+          name: JellyCMS v${{ steps.version.outputs.VERSION }}
+          body: |
+            ## JellyCMS v${{ steps.version.outputs.VERSION }}
+
+            JellyCMS is a page builder and content management solution specifically designed for Jellyfin 11.10.x.
+
+            ### Changelog
+            ${{ steps.changelog.outputs.LOG }}
+
+            ### Installation
+            Download `JellyCMS_${{ steps.version.outputs.VERSION }}.zip`, extract, and copy `JellyCMS.dll` to your Jellyfin plugins directory.
+
+            **MD5:** `${{ steps.checksum.outputs.MD5 }}`
+            **SHA256:** `${{ steps.checksum.outputs.SHA256 }}`
+          files: JellyCMS_${{ steps.version.outputs.VERSION }}.zip
