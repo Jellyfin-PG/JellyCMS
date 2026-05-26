@@ -1,0 +1,301 @@
+<div id="JellyCMS" data-role="page" class="page type-interior pluginConfigurationPage">
+  <div data-role="content">
+    <div class="content-primary">
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+      <link rel="stylesheet" href="/cms/assets/cms_admin.css" />
+
+      <!-- HTML Layout -->
+      <div class="cms-dashboard">
+        <!-- Header -->
+        <header class="dashboard-header">
+          <div class="header-logo">
+            <div class="logo-glowing-ring">
+              <span class="material-symbols-outlined icon-logo">grid_view</span>
+            </div>
+            <h1>JellyCMS <span>Studio</span></h1>
+          </div>
+          <div class="header-actions" style="display: flex; gap: 12px; align-items: center;">
+            <button type="button" class="btn btn-secondary" id="btn-fullscreen-studio" style="padding: 6px 14px; font-size: 0.85rem; display: flex; align-items: center; gap: 8px;">
+              <span class="material-symbols-outlined" style="font-size: 16px;">open_in_new</span>
+              Launch Fullscreen
+            </button>
+          </div>
+        </header>
+
+        <div class="dashboard-body">
+          <!-- Sidebar Navigation -->
+          <aside class="dashboard-sidebar">
+            <nav class="sidebar-nav">
+              <button type="button" class="nav-item active" data-tab="pages">
+                <span class="material-symbols-outlined">description</span>
+                Pages
+              </button>
+              <button type="button" class="nav-item" data-tab="settings">
+                <span class="material-symbols-outlined">settings_ethernet</span>
+                Global Layout Settings
+              </button>
+              <button type="button" class="nav-item" data-tab="marketplace">
+                <span class="material-symbols-outlined">storefront</span>
+                Blocks Marketplace
+              </button>
+            </nav>
+          </aside>
+
+          <!-- Main Content Panels -->
+          <main class="dashboard-main">
+            <section id="tab-pages" class="tab-content active">
+              <div class="tab-header">
+                <div class="tab-title">
+                  <h2>My Pages</h2>
+                  <p>Manage and design your Jellyfin custom web pages.</p>
+                </div>
+                <button type="button" class="btn btn-primary" id="btn-create-page">
+                  <span class="material-symbols-outlined">add</span> Create New Page
+                </button>
+              </div>
+              
+              <div class="pages-grid" id="pages-list">
+                <!-- Dynamic list of pages -->
+                <div class="loading-state">Loading pages...</div>
+              </div>
+            </section>
+
+            <section id="tab-settings" class="tab-content">
+              <div class="tab-header">
+                <div class="tab-title">
+                  <h2>Global Layout Injection</h2>
+                  <p>Inject custom HTML header tags, CSS styling rules, or scripts globally across all public pages.</p>
+                </div>
+                <button type="button" class="btn btn-primary" id="btn-save-settings">
+                  <span class="material-symbols-outlined">save</span> Save Global Settings
+                </button>
+              </div>
+
+              <div class="settings-form">
+                <div class="form-group">
+                  <label>Global Head HTML</label>
+                  <span class="field-desc">Injected into the &lt;head&gt; element of every compiled page. Perfect for custom layouts or metadata tags.</span>
+                  <textarea id="setting-head-html" placeholder="<!-- &lt;link href='...' &gt; -->" rows="4"></textarea>
+                </div>
+                
+                <div class="form-group">
+                  <label>Global Stylesheet (CSS)</label>
+                  <span class="field-desc">Styles compiled here apply globally to all page components.</span>
+                  <textarea id="setting-css" class="code-font" placeholder="body { ... }" rows="10"></textarea>
+                </div>
+                
+                <div class="form-group">
+                  <label>Global Scripts (JS)</label>
+                  <span class="field-desc">Executes at the end of the &lt;body&gt; of every compiled page.</span>
+                  <textarea id="setting-js" class="code-font" placeholder="console.log('JellyCMS Dynamic Page');" rows="10"></textarea>
+                </div>
+              </div>
+            </section>
+
+            <section id="tab-marketplace" class="tab-content">
+              <div class="tab-header">
+                <div class="tab-title">
+                  <h2>Blocks Marketplace</h2>
+                  <p>Install layout and widget packages from decentralized manifests or manage installed blocks.</p>
+                </div>
+              </div>
+
+              <div class="marketplace-layout">
+                <div class="marketplace-main">
+                  <h3 style="font-family: var(--font-display); font-size:1.15rem; font-weight:700;">Available Blocks</h3>
+                  <div class="marketplace-grid" id="marketplace-list">
+                    <!-- Market blocks -->
+                    <div class="loading-state">Loading catalog...</div>
+                  </div>
+                </div>
+
+                <div class="marketplace-sidebar">
+                  <div class="card">
+                    <h3>Repositories</h3>
+                    <div class="repo-list" id="repositories-list">
+                      <!-- Registered manifests -->
+                    </div>
+                    <hr style="border: 0; border-top: 1px solid var(--border-color); margin: 20px 0;">
+                    <form id="repo-add-form" class="repo-form">
+                      <div class="form-group">
+                        <label>Repo Name</label>
+                        <input type="text" id="repo-name" placeholder="e.g. Community Blocks" required>
+                      </div>
+                      <div class="form-group">
+                        <label>Manifest URL (repository.json)</label>
+                        <input type="url" id="repo-url" placeholder="https://..." required>
+                      </div>
+                      <button type="submit" class="btn btn-secondary btn-full">Add Repository</button>
+                    </form>
+                  </div>
+
+                  <div class="card">
+                    <h3>Installed Blocks</h3>
+                    <div class="installed-list" id="installed-blocks-list">
+                      <!-- List of local blocks -->
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </section>
+          </main>
+        </div>
+      </div>
+
+      <div class="builder-workspace" id="builder-studio" style="display: none;">
+        <!-- Editor Header Toolbar -->
+        <header class="builder-header">
+          <div class="builder-meta">
+            <button type="button" class="btn-icon" id="builder-btn-back">
+              <span class="material-symbols-outlined">arrow_back</span>
+            </button>
+            <div>
+              <h3 id="builder-page-title">Page Editor</h3>
+              <span class="page-slug" id="builder-page-slug">/CMS/home</span>
+            </div>
+          </div>
+
+          <!-- Device Switcher -->
+          <div class="device-switcher">
+            <button type="button" class="device-btn active" data-viewport="desktop" title="Desktop View">
+              <span class="material-symbols-outlined">desktop_windows</span>
+            </button>
+            <button type="button" class="device-btn" data-viewport="tablet" title="Tablet View">
+              <span class="material-symbols-outlined">tablet_mac</span>
+            </button>
+            <button type="button" class="device-btn" data-viewport="mobile" title="Mobile View">
+              <span class="material-symbols-outlined">phone_iphone</span>
+            </button>
+          </div>
+
+          <div class="builder-actions">
+            <button type="button" class="btn btn-secondary" id="builder-btn-settings">
+              <span class="material-symbols-outlined">settings</span> SEO / Settings
+            </button>
+            <button type="button" class="btn btn-secondary" id="builder-btn-draft">Save Draft</button>
+            <button type="button" class="btn btn-primary" id="builder-btn-publish">Publish Page</button>
+          </div>
+        </header>
+
+        <!-- Editor Workspace Grid -->
+        <div class="builder-body">
+          <!-- Left Panel: Interactive Visual Canvas -->
+          <div class="builder-canvas-wrapper" id="builder-viewport">
+            <div class="canvas-inner desktop" id="builder-canvas">
+              <!-- Dynamic block custom elements are appended here -->
+              <div class="canvas-empty" id="canvas-empty-state">
+                <span class="material-symbols-outlined">drag_pan</span>
+                <h4>This page is empty</h4>
+                <p>Select a block from the palette on the right to start building your layout.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right Panel: Inspector and Component Palette -->
+          <aside class="builder-inspector">
+            <div class="inspector-tabs">
+              <button type="button" class="inspector-tab-btn active" data-subtab="palette">Add Blocks</button>
+              <button type="button" class="inspector-tab-btn" data-subtab="inspector">Block Settings</button>
+            </div>
+
+            <div class="inspector-tab-content active" id="subtab-palette">
+              <div class="block-category-header">Palette</div>
+              <div class="block-palette-grid" id="palette-blocks">
+                <!-- Load installed blocks -->
+              </div>
+            </div>
+
+            <div class="inspector-tab-content" id="subtab-inspector">
+              <div id="inspector-no-selection" class="inspector-empty">
+                <span class="material-symbols-outlined">info</span>
+                <p>Click on any block on the canvas to edit its custom properties and responsive overrides.</p>
+              </div>
+              
+              <div id="inspector-editor" class="inspector-fields-wrapper" style="display: none;">
+                <div class="selected-block-header">
+                  <span class="material-symbols-outlined" id="selected-block-icon">widgets</span>
+                  <h4 id="selected-block-name">Hero Banner</h4>
+                </div>
+                
+                <div class="inspector-fields" id="dynamic-properties-root">
+                  <!-- Dynamically generated block settings form fields -->
+                </div>
+              </div>
+            </div>
+          </aside>
+        </div>
+      </div>
+
+      <div class="modal-overlay" id="page-settings-modal" style="display: none;">
+        <div class="modal-card">
+          <div class="modal-header">
+            <h3>Page Settings & SEO</h3>
+            <button type="button" class="btn-icon modal-close" id="modal-btn-close">
+              <span class="material-symbols-outlined">close</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <div class="form-group">
+              <label>Page Title</label>
+              <input type="text" id="modal-page-title" placeholder="e.g. My Custom Homepage" required>
+            </div>
+            <div class="form-group">
+              <label>URL Slug</label>
+              <input type="text" id="modal-page-slug" placeholder="e.g. home" required>
+              <span class="field-desc">Accessible at /CMS/[slug]</span>
+            </div>
+            <div class="form-group">
+              <label>Meta Description</label>
+              <textarea id="modal-seo-desc" placeholder="Brief search-engine summary..." rows="2"></textarea>
+            </div>
+            <div class="form-group">
+              <label>Meta Keywords</label>
+              <input type="text" id="modal-seo-keywords" placeholder="jellyfin, custom, media, cms">
+            </div>
+            <div class="form-group">
+              <label>Meta Author</label>
+              <input type="text" id="modal-seo-author" placeholder="Administrator">
+            </div>
+            
+            <hr style="border: 0; border-top: 1px solid var(--border-color); margin: 20px 0;">
+            <div style="font-family: var(--font-sans); font-size: 0.8rem; font-weight: 700; text-transform: uppercase; color: var(--primary); margin-bottom: 12px; letter-spacing: 0.5px;">Page Layout Settings</div>
+
+            <div class="form-group">
+              <label>Page Layout Style</label>
+              <select id="modal-layout-style">
+                <option value="full-width">Full Width (Standard Stack)</option>
+                <option value="contained">Contained (Boxed/Centered)</option>
+                <option value="grid">Grid Layout (Columns)</option>
+              </select>
+            </div>
+
+            <div class="form-group" id="modal-max-width-group" style="display: none;">
+              <label>Container Max-Width</label>
+              <input type="text" id="modal-max-width" placeholder="e.g. 1200px" value="1200px">
+            </div>
+
+            <div class="form-group">
+              <label>Background Color Override</label>
+              <input type="text" id="modal-bg-color" placeholder="e.g. #08090d">
+            </div>
+
+            <div class="form-group-row">
+              <label for="modal-page-draft">Draft Mode</label>
+              <label class="switch">
+                <input type="checkbox" id="modal-page-draft" checked>
+                <span class="slider"></span>
+              </label>
+            </div>
+            <span class="field-desc" style="margin-top: -8px; display: block; margin-bottom: 20px;">Draft pages are only visible to administrators.</span>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary modal-close">Cancel</button>
+            <button type="button" class="btn btn-primary" id="modal-btn-save">Apply Settings</button>
+          </div>
+        </div>
+      </div>
+
+      <script src="/cms/assets/cms_admin.js"></script>
+    </div>
+  </div>
+</div>
