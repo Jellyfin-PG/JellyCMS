@@ -1,0 +1,64 @@
+:host {
+  display: block;
+  width: 100%;
+}
+.hero-container {
+  padding: 80px 24px;
+  text-align: center;
+  border-radius: 12px;
+  background-size: cover;
+  background-position: center;
+  margin-bottom: 24px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 320px;
+  box-sizing: border-box;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.25);
+  transition: all 0.3s ease;
+}
+.hero-content {
+  max-width: 800px;
+}
+h1 {
+  font-size: 3rem;
+  margin: 0 0 16px;
+  font-weight: 800;
+  line-height: 1.15;
+  letter-spacing: -0.5px;
+}
+p {
+  font-size: 1.3rem;
+  margin: 0 0 32px;
+  opacity: 0.9;
+  font-weight: 300;
+  line-height: 1.6;
+}
+.btn {
+  display: inline-block;
+  padding: 14px 38px;
+  font-size: 1.05rem;
+  font-weight: 700;
+  text-decoration: none;
+  border-radius: 30px;
+  background: #ffffff;
+  color: #000000;
+  box-shadow: 0 4px 14px rgba(0,0,0,0.1);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0,0,0,0.2);
+}
+@media (max-width: 767px) {
+  h1 {
+    font-size: 2.2rem;
+  }
+  p {
+    font-size: 1.1rem;
+  }
+  .hero-container {
+    padding: 50px 16px;
+    min-height: 250px;
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "id": "custom-html",
+  "name": "Custom HTML",
+  "category": "Advanced",
+  "icon": "code",
+  "settings": [
+    {
+      "name": "html_content",
+      "label": "Custom HTML",
+      "type": "textarea",
+      "default": "<div class=\"custom-container\">\n  <h3>Custom Markup Block</h3>\n  <p>You can embed any custom HTML, CSS, and JS here. Press \"Block Settings\" to modify.</p>\n  <button class=\"custom-btn\">Click Me</button>\n</div>",
+      "group": "Markup",
+      "layout": "full"
+    },
+    {
+      "name": "css_content",
+      "label": "Custom CSS",
+      "type": "textarea",
+      "default": ".custom-container {\n  padding: 30px;\n  background: linear-gradient(135deg, rgba(255,255,255,0.02) 0%, rgba(255,255,255,0.05) 100%);\n  border: 1px solid rgba(255, 255, 255, 0.08);\n  border-radius: 12px;\n  text-align: center;\n  backdrop-filter: blur(10px);\n}\n.custom-container h3 {\n  margin: 0 0 10px;\n  color: #fff;\n  font-size: 1.4rem;\n}\n.custom-container p {\n  color: #8e9099;\n  font-size: 0.95rem;\n  margin-bottom: 20px;\n}\n.custom-btn {\n  background: #ffffff;\n  color: #000000;\n  border: none;\n  padding: 8px 16px;\n  border-radius: 6px;\n  cursor: pointer;\n  font-weight: 600;\n  transition: opacity 0.2s;\n}\n.custom-btn:hover {\n  opacity: 0.9;\n}",
+      "group": "Styling",
+      "layout": "full"
+    },
+    {
+      "name": "js_content",
+      "label": "Custom JavaScript",
+      "type": "textarea",
+      "default": "// 'this' refers to the custom element, so you can scope selectors inside the Shadow DOM:\nconst btn = this.shadowRoot.querySelector('.custom-btn');\nif (btn) {\n  btn.addEventListener('click', () => {\n    alert('Hello from Custom HTML Block!');\n  });\n}",
+      "group": "Scripting",
+      "layout": "full"
+    }
+  ]
+}

@@ -1,0 +1,206 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0');
+
+:host {
+  display: block;
+  width: 100%;
+}
+.chat-container {
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(255, 255, 255, 0.02);
+  backdrop-filter: blur(12px);
+  border-radius: 16px;
+  display: flex;
+  flex-direction: column;
+  height: 500px;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+.chat-header {
+  padding: 16px 20px;
+  background: rgba(255, 255, 255, 0.03);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.chat-header-avatar {
+  font-size: 1.8rem;
+}
+.chat-header-info {
+  display: flex;
+  flex-direction: column;
+}
+h3 {
+  margin: 0;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #ffffff;
+  letter-spacing: -0.2px;
+}
+.chat-status {
+  font-size: 0.75rem;
+  color: #00e5ff;
+  font-weight: 500;
+}
+.chat-messages {
+  flex-grow: 1;
+  padding: 20px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  scroll-behavior: smooth;
+}
+.message {
+  display: flex;
+  gap: 12px;
+  max-width: 85%;
+  animation: slide-in 0.25s ease-out forwards;
+}
+@keyframes slide-in {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.message.user-msg {
+  align-self: flex-end;
+  flex-direction: row-reverse;
+}
+.message .avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.05);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1rem;
+  flex-shrink: 0;
+}
+.msg-bubble {
+  padding: 12px 16px;
+  border-radius: 14px;
+  font-size: 0.9rem;
+  line-height: 1.45;
+  color: #f4f4f5;
+  word-break: break-word;
+}
+.user-msg .msg-bubble {
+  background: #0084ff;
+  border-bottom-right-radius: 2px;
+  color: #ffffff;
+}
+.system-msg .msg-bubble {
+  background: rgba(255, 255, 255, 0.05);
+  border-bottom-left-radius: 2px;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+}
+.typing-dots {
+  display: flex;
+  gap: 4px;
+  padding: 6px 8px;
+  align-items: center;
+}
+.typing-dots span {
+  width: 6px;
+  height: 6px;
+  background: rgba(255,255,255,0.4);
+  border-radius: 50%;
+  animation: typing 1.4s infinite both;
+}
+.typing-dots span:nth-child(2) { animation-delay: 0.2s; }
+.typing-dots span:nth-child(3) { animation-delay: 0.4s; }
+@keyframes typing {
+  0%, 80%, 100% { transform: scale(0.6); opacity: 0.4; }
+  40% { transform: scale(1); opacity: 1; }
+}
+
+/* Recommended Cards Layout inside chat */
+.recommendations-deck {
+  display: flex;
+  gap: 12px;
+  overflow-x: auto;
+  padding: 8px 0;
+  width: 100%;
+  margin-top: 10px;
+  scroll-snap-type: x mandatory;
+}
+.rec-card {
+  width: 120px;
+  flex-shrink: 0;
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 8px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  text-decoration: none;
+  color: #ffffff;
+  transition: border-color 0.2s;
+  scroll-snap-align: start;
+}
+.rec-card:hover {
+  border-color: #00e5ff;
+}
+.rec-poster {
+  aspect-ratio: 2/3;
+  background-size: cover;
+  background-position: center;
+  background-color: #12131a;
+}
+.rec-title {
+  padding: 8px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-align: center;
+}
+
+.chat-input-area {
+  padding: 16px;
+  background: rgba(255,255,255,0.02);
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  display: flex;
+  gap: 12px;
+}
+#chat-input {
+  flex-grow: 1;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 8px;
+  color: #ffffff;
+  padding: 10px 16px;
+  font-family: inherit;
+  font-size: 0.9rem;
+  outline: none;
+  transition: border-color 0.2s;
+}
+#chat-input:focus {
+  border-color: #00e5ff;
+}
+#send-btn {
+  background: #00e5ff;
+  border: none;
+  color: #000000;
+  width: 42px;
+  height: 42px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+#send-btn:hover {
+  opacity: 0.9;
+}
+#send-btn span {
+  font-size: 1.2rem;
+}

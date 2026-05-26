@@ -1,0 +1,32 @@
+{
+  "id": "upcoming-releases",
+  "name": "Upcoming Releases Calendar",
+  "category": "Integrations",
+  "icon": "calendar_month",
+  "settings": [
+    {
+      "name": "title",
+      "label": "Widget Header Title",
+      "type": "text",
+      "default": "Airing TV Shows",
+      "group": "Content",
+      "layout": "full"
+    },
+    {
+      "name": "api_url",
+      "label": "Sonarr URL",
+      "type": "text",
+      "default": "http://localhost:8989",
+      "group": "Configuration",
+      "layout": "full"
+    },
+    {
+      "name": "api_key",
+      "label": "Sonarr API Key",
+      "type": "text",
+      "default": "",
+      "group": "Configuration",
+      "layout": "full"
+    }
+  ]
+}

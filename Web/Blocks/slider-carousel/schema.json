@@ -1,0 +1,88 @@
+{
+  "id": "slider-carousel",
+  "name": "Image Slider & Carousel",
+  "category": "Media",
+  "icon": "slideshow",
+  "settings": [
+    {
+      "name": "height",
+      "label": "Slider Height (px)",
+      "type": "text",
+      "default": "400px",
+      "group": "Layout",
+      "layout": "half"
+    },
+    {
+      "name": "transition_speed",
+      "label": "Autoplay Transition Speed (ms)",
+      "type": "text",
+      "default": "5000",
+      "group": "Behavior",
+      "layout": "half"
+    },
+    {
+      "name": "slide1_image",
+      "label": "Slide 1 Image URL",
+      "type": "text",
+      "default": "https://images.unsplash.com/photo-1574375927938-d5a98e8edd85?w=1600&auto=format&fit=crop&q=80",
+      "group": "Slide 1",
+      "layout": "full"
+    },
+    {
+      "name": "slide1_title",
+      "label": "Slide 1 Title",
+      "type": "text",
+      "default": "Stream Your Favorite Movies",
+      "group": "Slide 1",
+      "layout": "half"
+    },
+    {
+      "name": "slide1_desc",
+      "label": "Slide 1 Description",
+      "type": "text",
+      "default": "Experience theater quality cinema directly in your living room.",
+      "group": "Slide 1",
+      "layout": "half"
+    },
+    {
+      "name": "slide1_link",
+      "label": "Slide 1 Action Link",
+      "type": "text",
+      "default": "/web/index.html",
+      "group": "Slide 1",
+      "layout": "full"
+    },
+    {
+      "name": "slide2_image",
+      "label": "Slide 2 Image URL",
+      "type": "text",
+      "default": "https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?w=1600&auto=format&fit=crop&q=80",
+      "group": "Slide 2",
+      "layout": "full"
+    },
+    {
+      "name": "slide2_title",
+      "label": "Slide 2 Title",
+      "type": "text",
+      "default": "Your Entire Collection, Anywhere",
+      "group": "Slide 2",
+      "layout": "half"
+    },
+    {
+      "name": "slide2_desc",
+      "label": "Slide 2 Description",
+      "type": "text",
+      "default": "Access all your music, shows, and photos on the go.",
+      "group": "Slide 2",
+      "layout": "half"
+    },
+    {
+      "name": "slide2_link",
+      "label": "Slide 2 Action Link",
+      "type": "text",
+      "default": "/web/index.html",
+      "group": "Slide 2",
+      "layout": "full"
+    }
+  ]
+}

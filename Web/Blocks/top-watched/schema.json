@@ -1,0 +1,33 @@
+{
+  "id": "top-watched",
+  "name": "Top Watched",
+  "category": "Jellyfin",
+  "icon": "leaderboard",
+  "settings": [
+    {
+      "name": "title",
+      "label": "Section Header Title",
+      "type": "text",
+      "default": "Most Watched Movies",
+      "group": "Content",
+      "layout": "full"
+    },
+    {
+      "name": "item_type",
+      "label": "Media Type",
+      "type": "select",
+      "default": "Movie",
+      "options": ["Movie", "Series", "Episode"],
+      "group": "Content",
+      "layout": "half"
+    },
+    {
+      "name": "limit",
+      "label": "Maximum Items",
+      "type": "number",
+      "default": 6,
+      "group": "Content",
+      "layout": "half"
+    }
+  ]
+}

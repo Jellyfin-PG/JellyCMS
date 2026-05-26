@@ -1,0 +1,16 @@
+{
+  "id": "music-player",
+  "name": "Library Music Player",
+  "category": "Interactive",
+  "icon": "music_note",
+  "settings": [
+    {
+      "name": "title",
+      "label": "Widget Header Title",
+      "type": "text",
+      "default": "Music Player",
+      "group": "Content",
+      "layout": "full"
+    }
+  ]
+}

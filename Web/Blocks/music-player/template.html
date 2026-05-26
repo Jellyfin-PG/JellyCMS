@@ -1,0 +1,31 @@
+<div class="player-container">
+  <div class="player-header">
+    <span class="material-symbols-outlined icon">music_note</span>
+    <h2 id="player-title">Music Player</h2>
+  </div>
+  <div class="player-body">
+    <div class="disc-art" id="disc-art-img"></div>
+    <div class="track-details">
+      <div class="track-name" id="track-name-txt">Select a song</div>
+      <div class="artist-name" id="artist-name-txt">No track active</div>
+    </div>
+    <div class="player-controls">
+      <button class="ctrl-btn" id="prev-btn">
+        <span class="material-symbols-outlined">skip_previous</span>
+      </button>
+      <button class="ctrl-btn play-btn" id="play-pause-btn">
+        <span class="material-symbols-outlined" id="play-icon">play_arrow</span>
+      </button>
+      <button class="ctrl-btn" id="next-btn">
+        <span class="material-symbols-outlined">skip_next</span>
+      </button>
+    </div>
+    <div class="progress-box">
+      <span class="time-lbl" id="current-time">0:00</span>
+      <div class="slider-track" id="progress-bar-track">
+        <div class="slider-fill" id="progress-bar-fill"></div>
+      </div>
+      <span class="time-lbl" id="total-time">0:00</span>
+    </div>
+  </div>
+</div>

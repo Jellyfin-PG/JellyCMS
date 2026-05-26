@@ -1,0 +1,16 @@
+{
+  "id": "server-health",
+  "name": "Server Health Monitor",
+  "category": "Admin",
+  "icon": "monitor_heart",
+  "settings": [
+    {
+      "name": "title",
+      "label": "Widget Header Title",
+      "type": "text",
+      "default": "System Monitor",
+      "group": "Content",
+      "layout": "full"
+    }
+  ]
+}

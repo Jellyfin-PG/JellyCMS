@@ -1,0 +1,16 @@
+{
+  "id": "user-achievements",
+  "name": "User Achievements Tracker",
+  "category": "Jellyfin",
+  "icon": "military_tech",
+  "settings": [
+    {
+      "name": "title",
+      "label": "Section Header Title",
+      "type": "text",
+      "default": "Your Watch Milestones",
+      "group": "Content",
+      "layout": "full"
+    }
+  ]
+}

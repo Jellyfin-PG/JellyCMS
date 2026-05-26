@@ -1,0 +1,104 @@
+{
+  "id": "feature-cards",
+  "name": "Feature Cards Grid",
+  "category": "Layout",
+  "icon": "grid_view",
+  "settings": [
+    {
+      "name": "columns",
+      "label": "Columns Count (Desktop)",
+      "type": "text",
+      "default": "3",
+      "group": "Grid Layout",
+      "layout": "half"
+    },
+    {
+      "name": "card_bg",
+      "label": "Card Background",
+      "type": "color",
+      "default": "#14151b",
+      "group": "Colors",
+      "layout": "half"
+    },
+    {
+      "name": "hover_accent",
+      "label": "Hover Accent Color",
+      "type": "color",
+      "default": "#00a4dc",
+      "group": "Colors",
+      "layout": "half"
+    },
+    {
+      "name": "card1_icon",
+      "label": "Card 1 Icon (Material ID)",
+      "type": "text",
+      "default": "movie",
+      "group": "Card 1 Content",
+      "layout": "half"
+    },
+    {
+      "name": "card1_title",
+      "label": "Card 1 Title",
+      "type": "text",
+      "default": "Cinema Quality",
+      "group": "Card 1 Content",
+      "layout": "half"
+    },
+    {
+      "name": "card1_desc",
+      "label": "Card 1 Description",
+      "type": "textarea",
+      "default": "Stream content directly in pristine 4K HDR with audio pass-through support.",
+      "group": "Card 1 Content",
+      "layout": "full"
+    },
+    {
+      "name": "card2_icon",
+      "label": "Card 2 Icon (Material ID)",
+      "type": "text",
+      "default": "devices",
+      "group": "Card 2 Content",
+      "layout": "half"
+    },
+    {
+      "name": "card2_title",
+      "label": "Card 2 Title",
+      "type": "text",
+      "default": "Universal Apps",
+      "group": "Card 2 Content",
+      "layout": "half"
+    },
+    {
+      "name": "card2_desc",
+      "label": "Card 2 Description",
+      "type": "textarea",
+      "default": "Access your server via Android, iOS, Apple TV, Roku, fireTV, or web clients.",
+      "group": "Card 2 Content",
+      "layout": "full"
+    },
+    {
+      "name": "card3_icon",
+      "label": "Card 3 Icon (Material ID)",
+      "type": "text",
+      "default": "download",
+      "group": "Card 3 Content",
+      "layout": "half"
+    },
+    {
+      "name": "card3_title",
+      "label": "Card 3 Title",
+      "type": "text",
+      "default": "Offline Sync",
+      "group": "Card 3 Content",
+      "layout": "half"
+    },
+    {
+      "name": "card3_desc",
+      "label": "Card 3 Description",
+      "type": "textarea",
+      "default": "Download movies and episodes before traveling to watch without connection.",
+      "group": "Card 3 Content",
+      "layout": "full"
+    }
+  ]
+}

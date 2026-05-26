@@ -1,0 +1,32 @@
+{
+  "id": "overseerr-requests",
+  "name": "Request Center",
+  "category": "Advanced",
+  "icon": "add_to_queue",
+  "settings": [
+    {
+      "name": "title",
+      "label": "Block Header Title",
+      "type": "text",
+      "default": "Request Movies & TV Shows",
+      "group": "Content",
+      "layout": "full"
+    },
+    {
+      "name": "overseerr_url",
+      "label": "Overseerr/Jellyseerr URL",
+      "type": "text",
+      "default": "http://localhost:5055",
+      "group": "Connection",
+      "layout": "full"
+    },
+    {
+      "name": "api_key",
+      "label": "API Key",
+      "type": "text",
+      "default": "",
+      "group": "Connection",
+      "layout": "full"
+    }
+  ]
+}

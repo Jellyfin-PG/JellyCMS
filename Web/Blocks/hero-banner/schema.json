@@ -1,0 +1,56 @@
+{
+  "id": "hero-banner",
+  "name": "Hero Banner",
+  "category": "Layout",
+  "icon": "panorama",
+  "settings": [
+    {
+      "name": "title",
+      "label": "Heading Text",
+      "type": "text",
+      "default": "Welcome to Jellyfin",
+      "group": "Content",
+      "layout": "full"
+    },
+    {
+      "name": "subtitle",
+      "label": "Sub-heading Text",
+      "type": "textarea",
+      "default": "Stream your media libraries anywhere, on any device.",
+      "group": "Content",
+      "layout": "full"
+    },
+    {
+      "name": "bg_color",
+      "label": "Background Color",
+      "type": "color",
+      "default": "#00a4dc",
+      "group": "Style",
+      "layout": "half"
+    },
+    {
+      "name": "text_color",
+      "label": "Text Color",
+      "type": "color",
+      "default": "#ffffff",
+      "group": "Style",
+      "layout": "half"
+    },
+    {
+      "name": "button_text",
+      "label": "Button Text",
+      "type": "text",
+      "default": "Browse Library",
+      "group": "Content",
+      "layout": "half"
+    },
+    {
+      "name": "button_link",
+      "label": "Button Link",
+      "type": "text",
+      "default": "/web/index.html",
+      "group": "Content",
+      "layout": "half"
+    }
+  ]
+}

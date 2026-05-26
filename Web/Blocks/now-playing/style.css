@@ -1,0 +1,186 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0');
+
+:host {
+  display: block;
+  width: 100%;
+}
+.sessions-container {
+  padding: 24px 0;
+  margin-bottom: 24px;
+}
+.sessions-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 24px;
+}
+.sessions-pulse-icon {
+  color: #00e5ff;
+  font-size: 2rem !important;
+  text-shadow: 0 0 10px rgba(0, 229, 255, 0.4);
+  animation: pulse-ring 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+@keyframes pulse-ring {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.6;
+    transform: scale(0.95);
+  }
+}
+h2 {
+  font-size: 1.8rem;
+  font-weight: 700;
+  margin: 0;
+  color: #ffffff;
+  letter-spacing: -0.3px;
+}
+.sessions-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 20px;
+}
+.session-card {
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+  padding: 16px;
+  display: flex;
+  gap: 16px;
+  backdrop-filter: blur(10px);
+  box-sizing: border-box;
+  position: relative;
+  transition: border-color 0.25s ease, box-shadow 0.25s ease;
+}
+.session-card:hover {
+  border-color: rgba(0, 229, 255, 0.3);
+  box-shadow: 0 8px 20px rgba(0, 229, 255, 0.08);
+}
+.session-poster {
+  width: 80px;
+  height: 120px;
+  background-size: cover;
+  background-position: center;
+  background-color: #12131a;
+  border-radius: 6px;
+  flex-shrink: 0;
+}
+.session-details {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  min-width: 0;
+}
+.session-user-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+.session-user-avatar {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background-color: rgba(255,255,255,0.1);
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.7rem;
+  font-weight: bold;
+}
+.session-username {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text-muted, #8e9099);
+}
+.session-media-title {
+  font-size: 1rem;
+  font-weight: 700;
+  margin: 0 0 4px;
+  color: #ffffff;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.session-media-subtitle {
+  font-size: 0.8rem;
+  color: rgba(255,255,255,0.5);
+  margin-bottom: 8px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.progress-container {
+  width: 100%;
+  margin-bottom: 8px;
+}
+.progress-bar-bg {
+  width: 100%;
+  height: 6px;
+  background: rgba(255,255,255,0.06);
+  border-radius: 3px;
+  overflow: hidden;
+}
+.progress-bar-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #00e5ff, #0084ff);
+  border-radius: 3px;
+  width: 0%;
+  transition: width 0.5s ease;
+}
+.progress-time-row {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.75rem;
+  color: rgba(255,255,255,0.4);
+  margin-top: 4px;
+}
+.session-footer-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: auto;
+  font-size: 0.75rem;
+}
+.session-client {
+  color: rgba(255,255,255,0.45);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 140px;
+}
+.session-stream-badge {
+  background: rgba(0, 229, 255, 0.1);
+  color: #00e5ff;
+  border: 1px solid rgba(0, 229, 255, 0.2);
+  padding: 1px 6px;
+  border-radius: 4px;
+  font-size: 0.7rem;
+  font-weight: 600;
+}
+.session-stream-badge.transcoding {
+  background: rgba(255, 171, 0, 0.1);
+  color: #ffab00;
+  border-color: rgba(255, 171, 0, 0.2);
+}
+.loading, .error, .no-sessions {
+  grid-column: 1 / -1;
+  padding: 40px;
+  text-align: center;
+  color: #888888;
+  font-size: 1rem;
+  background: rgba(255,255,255,0.02);
+  border-radius: 8px;
+  border: 1px dashed rgba(255,255,255,0.1);
+}
+.no-sessions {
+  border-style: solid;
+  border-color: rgba(255,255,255,0.04);
+}
+.error {
+  color: #ff4d4d;
+}

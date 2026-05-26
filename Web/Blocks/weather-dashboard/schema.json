@@ -1,0 +1,33 @@
+{
+  "id": "weather-dashboard",
+  "name": "Weather Dashboard",
+  "category": "Interactive",
+  "icon": "partly_cloudy_day",
+  "settings": [
+    {
+      "name": "title",
+      "label": "Widget Header Title",
+      "type": "text",
+      "default": "Local Weather",
+      "group": "Content",
+      "layout": "full"
+    },
+    {
+      "name": "city",
+      "label": "City Name",
+      "type": "text",
+      "default": "London",
+      "group": "Content",
+      "layout": "half"
+    },
+    {
+      "name": "unit",
+      "label": "Temperature Unit",
+      "type": "select",
+      "default": "C",
+      "options": ["C", "F"],
+      "group": "Content",
+      "layout": "half"
+    }
+  ]
+}

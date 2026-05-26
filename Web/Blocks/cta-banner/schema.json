@@ -1,0 +1,80 @@
+{
+  "id": "cta-banner",
+  "name": "Call to Action Banner",
+  "category": "Layout",
+  "icon": "campaign",
+  "settings": [
+    {
+      "name": "title",
+      "label": "Headline Text",
+      "type": "text",
+      "default": "Ready to Start Streaming?",
+      "group": "Content",
+      "layout": "full"
+    },
+    {
+      "name": "subtitle",
+      "label": "Sub-headline Text",
+      "type": "textarea",
+      "default": "Set up your own Jellyfin server today and enjoy free, open-source media streaming.",
+      "group": "Content",
+      "layout": "full"
+    },
+    {
+      "name": "primary_btn_text",
+      "label": "Primary Button Text",
+      "type": "text",
+      "default": "Get Started Now",
+      "group": "Actions",
+      "layout": "half"
+    },
+    {
+      "name": "primary_btn_link",
+      "label": "Primary Button Link",
+      "type": "text",
+      "default": "/web/index.html",
+      "group": "Actions",
+      "layout": "half"
+    },
+    {
+      "name": "secondary_btn_text",
+      "label": "Secondary Button Text",
+      "type": "text",
+      "default": "Learn More",
+      "group": "Actions",
+      "layout": "half"
+    },
+    {
+      "name": "secondary_btn_link",
+      "label": "Secondary Button Link",
+      "type": "text",
+      "default": "https://jellyfin.org",
+      "group": "Actions",
+      "layout": "half"
+    },
+    {
+      "name": "bg_gradient_start",
+      "label": "Gradient Color Start",
+      "type": "color",
+      "default": "#1a122e",
+      "group": "Style",
+      "layout": "half"
+    },
+    {
+      "name": "bg_gradient_end",
+      "label": "Gradient Color End",
+      "type": "color",
+      "default": "#0b0c0f",
+      "group": "Style",
+      "layout": "half"
+    },
+    {
+      "name": "glow_color",
+      "label": "Glow Overlay Color",
+      "type": "color",
+      "default": "#00a4dc",
+      "group": "Style",
+      "layout": "full"
+    }
+  ]
+}

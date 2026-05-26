@@ -1,0 +1,32 @@
+{
+  "id": "subtitle-requests",
+  "name": "Subtitle Request Hub",
+  "category": "Integrations",
+  "icon": "subtitles",
+  "settings": [
+    {
+      "name": "title",
+      "label": "Widget Header Title",
+      "type": "text",
+      "default": "Request Subtitles",
+      "group": "Content",
+      "layout": "full"
+    },
+    {
+      "name": "bazarr_url",
+      "label": "Bazarr URL",
+      "type": "text",
+      "default": "http://localhost:6767",
+      "group": "Configuration",
+      "layout": "full"
+    },
+    {
+      "name": "bazarr_key",
+      "label": "Bazarr API Key",
+      "type": "text",
+      "default": "",
+      "group": "Configuration",
+      "layout": "full"
+    }
+  ]
+}

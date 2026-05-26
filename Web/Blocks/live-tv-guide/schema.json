@@ -1,0 +1,24 @@
+{
+  "id": "live-tv-guide",
+  "name": "Live TV Guide",
+  "category": "Jellyfin",
+  "icon": "live_tv",
+  "settings": [
+    {
+      "name": "title",
+      "label": "Guide Header Title",
+      "type": "text",
+      "default": "Live TV Guide",
+      "group": "Content",
+      "layout": "full"
+    },
+    {
+      "name": "limit",
+      "label": "Max Channels",
+      "type": "text",
+      "default": "5",
+      "group": "Content",
+      "layout": "full"
+    }
+  ]
+}

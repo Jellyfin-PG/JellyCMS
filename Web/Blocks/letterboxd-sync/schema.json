@@ -1,0 +1,24 @@
+{
+  "id": "letterboxd-sync",
+  "name": "Letterboxd Sync Activity",
+  "category": "Integrations",
+  "icon": "rate_review",
+  "settings": [
+    {
+      "name": "title",
+      "label": "Widget Header Title",
+      "type": "text",
+      "default": "Letterboxd Activity",
+      "group": "Content",
+      "layout": "full"
+    },
+    {
+      "name": "username",
+      "label": "Letterboxd Username",
+      "type": "text",
+      "default": "",
+      "group": "Configuration",
+      "layout": "full"
+    }
+  ]
+}

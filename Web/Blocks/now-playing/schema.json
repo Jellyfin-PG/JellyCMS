@@ -1,0 +1,25 @@
+{
+  "id": "now-playing",
+  "name": "Now Playing",
+  "category": "Jellyfin",
+  "icon": "sensors",
+  "settings": [
+    {
+      "name": "title",
+      "label": "Section Header Title",
+      "type": "text",
+      "default": "Live Server Activity",
+      "group": "Content",
+      "layout": "full"
+    },
+    {
+      "name": "show_admin_only",
+      "label": "Show to Admins Only",
+      "type": "select",
+      "default": "No",
+      "options": ["No", "Yes"],
+      "group": "Access",
+      "layout": "half"
+    }
+  ]
+}

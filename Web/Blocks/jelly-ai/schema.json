@@ -1,0 +1,48 @@
+{
+  "id": "jelly-ai",
+  "name": "JellyAI Assistant",
+  "category": "Advanced",
+  "icon": "smart_toy",
+  "settings": [
+    {
+      "name": "title",
+      "label": "Assistant Title",
+      "type": "text",
+      "default": "JellyAI Recommendation Assistant",
+      "group": "Content",
+      "layout": "full"
+    },
+    {
+      "name": "api_endpoint",
+      "label": "OpenAI-Compatible Endpoint",
+      "type": "text",
+      "default": "https://api.openai.com/v1",
+      "group": "API Config",
+      "layout": "full"
+    },
+    {
+      "name": "api_key",
+      "label": "API Key",
+      "type": "text",
+      "default": "",
+      "group": "API Config",
+      "layout": "full"
+    },
+    {
+      "name": "model_name",
+      "label": "Model Name",
+      "type": "text",
+      "default": "gpt-4o-mini",
+      "group": "API Config",
+      "layout": "half"
+    },
+    {
+      "name": "avatar_emoji",
+      "label": "Bot Avatar Emoji",
+      "type": "text",
+      "default": "🤖",
+      "group": "Content",
+      "layout": "half"
+    }
+  ]
+}

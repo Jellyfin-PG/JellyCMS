@@ -1,0 +1,33 @@
+{
+  "id": "recently-added",
+  "name": "Recently Added Carousel",
+  "category": "Jellyfin",
+  "icon": "new_releases",
+  "settings": [
+    {
+      "name": "title",
+      "label": "Section Header Title",
+      "type": "text",
+      "default": "Recently Added",
+      "group": "Content",
+      "layout": "full"
+    },
+    {
+      "name": "limit",
+      "label": "Max Items",
+      "type": "text",
+      "default": "12",
+      "group": "Content",
+      "layout": "half"
+    },
+    {
+      "name": "item_type",
+      "label": "Media Type Filter",
+      "type": "select",
+      "default": "All",
+      "options": ["All", "Movie", "Series"],
+      "group": "Content",
+      "layout": "half"
+    }
+  ]
+}

@@ -1,0 +1,24 @@
+{
+  "id": "server-announcements",
+  "name": "Server Announcements",
+  "category": "Admin",
+  "icon": "campaign",
+  "settings": [
+    {
+      "name": "title",
+      "label": "Widget Header Title",
+      "type": "text",
+      "default": "Server Board",
+      "group": "Content",
+      "layout": "full"
+    },
+    {
+      "name": "announcement_text",
+      "label": "Announcement Message",
+      "type": "textarea",
+      "default": "Welcome to the media portal! Maintenance scheduled for Friday at midnight.",
+      "group": "Content",
+      "layout": "full"
+    }
+  ]
+}

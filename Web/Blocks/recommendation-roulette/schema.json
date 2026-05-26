@@ -1,0 +1,16 @@
+{
+  "id": "recommendation-roulette",
+  "name": "Recommendation Roulette",
+  "category": "Interactive",
+  "icon": "casino",
+  "settings": [
+    {
+      "name": "title",
+      "label": "Widget Header Title",
+      "type": "text",
+      "default": "Decide What to Watch",
+      "group": "Content",
+      "layout": "full"
+    }
+  ]
+}

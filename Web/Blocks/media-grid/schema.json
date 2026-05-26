@@ -1,0 +1,33 @@
+{
+  "id": "media-grid",
+  "name": "Media Grid",
+  "category": "Jellyfin",
+  "icon": "grid_view",
+  "settings": [
+    {
+      "name": "title",
+      "label": "Grid Header Title",
+      "type": "text",
+      "default": "Recently Added Movies",
+      "group": "Content",
+      "layout": "full"
+    },
+    {
+      "name": "item_type",
+      "label": "Media Type",
+      "type": "select",
+      "default": "Movie",
+      "options": ["Movie", "Series", "MusicAlbum"],
+      "group": "Content",
+      "layout": "half"
+    },
+    {
+      "name": "limit",
+      "label": "Maximum Items",
+      "type": "number",
+      "default": 6,
+      "group": "Content",
+      "layout": "half"
+    }
+  ]
+}

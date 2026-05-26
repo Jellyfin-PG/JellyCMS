@@ -1,0 +1,24 @@
+{
+  "id": "next-up",
+  "name": "Continue Watching",
+  "category": "Jellyfin",
+  "icon": "play_arrow",
+  "settings": [
+    {
+      "name": "title",
+      "label": "Section Header Title",
+      "type": "text",
+      "default": "Continue Watching",
+      "group": "Content",
+      "layout": "full"
+    },
+    {
+      "name": "limit",
+      "label": "Max Items",
+      "type": "text",
+      "default": "8",
+      "group": "Content",
+      "layout": "full"
+    }
+  ]
+}

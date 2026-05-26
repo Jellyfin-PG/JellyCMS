@@ -1,0 +1,25 @@
+<div class="roulette-container">
+  <div class="roulette-header">
+    <span class="material-symbols-outlined icon">casino</span>
+    <h2 id="roulette-title">Decide What to Watch</h2>
+  </div>
+  <div class="roulette-body">
+    <div class="wheel-box">
+      <svg class="wheel-svg" viewBox="0 0 200 200" id="wheel-graphic">
+        <!-- Segments drawn dynamically in JavaScript -->
+      </svg>
+      <div class="wheel-pin"></div>
+    </div>
+    <div class="action-box">
+      <button class="spin-btn" id="spin-trigger">Spin the Wheel</button>
+      <div class="result-card" id="result-display" style="display: none;">
+        <div class="result-poster" id="result-poster-img"></div>
+        <div class="result-info">
+          <div class="result-media-title" id="result-title-txt"></div>
+          <div class="result-media-meta" id="result-meta-txt"></div>
+          <a class="watch-btn" id="result-link" target="_blank">Watch Now</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

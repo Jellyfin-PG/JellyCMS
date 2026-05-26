@@ -1,0 +1,20 @@
+<div class="speedtest-container">
+  <div class="speedtest-header">
+    <span class="material-symbols-outlined icon">speed</span>
+    <h2 id="speedtest-title">Network Speedtest</h2>
+  </div>
+  <div class="speedtest-body">
+    <div class="gauge-box">
+      <svg class="gauge-svg" viewBox="0 0 100 50">
+        <path class="gauge-track" d="M 10 50 A 40 40 0 0 1 90 50" fill="none" stroke-width="8"></path>
+        <path class="gauge-fill" id="gauge-fill-arc" d="M 10 50 A 40 40 0 0 1 90 50" fill="none" stroke-width="8" stroke-dasharray="126" stroke-dashoffset="126"></path>
+      </svg>
+      <div class="gauge-value" id="speed-val">0.0</div>
+      <div class="gauge-unit">Mbps</div>
+    </div>
+    <div class="action-box">
+      <button class="test-btn" id="start-test-btn">Run Speedtest</button>
+      <div class="test-status" id="test-status-txt">Ready to test connection to your Jellyfin server.</div>
+    </div>
+  </div>
+</div>

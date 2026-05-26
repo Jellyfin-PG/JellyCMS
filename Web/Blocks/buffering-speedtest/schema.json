@@ -1,0 +1,16 @@
+{
+  "id": "buffering-speedtest",
+  "name": "Buffer Speedtest",
+  "category": "Interactive",
+  "icon": "speed",
+  "settings": [
+    {
+      "name": "title",
+      "label": "Widget Header Title",
+      "type": "text",
+      "default": "Network Speedtest",
+      "group": "Content",
+      "layout": "full"
+    }
+  ]
+}

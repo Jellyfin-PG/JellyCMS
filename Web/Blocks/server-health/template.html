@@ -1,0 +1,44 @@
+<div class="monitor-container">
+  <div class="monitor-header">
+    <span class="material-symbols-outlined status-icon">monitor_heart</span>
+    <h2 id="monitor-title">System Monitor</h2>
+  </div>
+  <div class="metrics-grid">
+    <div class="metric-card">
+      <div class="metric-info">
+        <span class="metric-label">CPU Usage</span>
+        <span class="metric-value" id="cpu-val">0%</span>
+      </div>
+      <div class="gauge-bg">
+        <div class="gauge-fill" id="cpu-fill" style="width: 0%"></div>
+      </div>
+    </div>
+    <div class="metric-card">
+      <div class="metric-info">
+        <span class="metric-label">RAM Usage</span>
+        <span class="metric-value" id="ram-val">0%</span>
+      </div>
+      <div class="gauge-bg">
+        <div class="gauge-fill" id="ram-fill" style="width: 0%"></div>
+      </div>
+    </div>
+    <div class="metric-card numeric-card">
+      <div class="numeric-label">Active Streams</div>
+      <div class="numeric-value" id="streams-count">0</div>
+    </div>
+    <div class="metric-card numeric-card">
+      <div class="numeric-label">Transcoding</div>
+      <div class="numeric-value" id="transcodes-count">0</div>
+    </div>
+  </div>
+  <div class="server-details-row">
+    <div class="detail-item">
+      <span class="detail-label">Jellyfin Version</span>
+      <span class="detail-value" id="jellyfin-ver">Unknown</span>
+    </div>
+    <div class="detail-item">
+      <span class="detail-label">Operating System</span>
+      <span class="detail-value" id="server-os">Unknown</span>
+    </div>
+  </div>
+</div>

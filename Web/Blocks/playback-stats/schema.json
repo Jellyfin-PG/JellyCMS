@@ -1,0 +1,16 @@
+{
+  "id": "playback-stats",
+  "name": "Playback Statistics",
+  "category": "Jellyfin",
+  "icon": "bar_chart",
+  "settings": [
+    {
+      "name": "title",
+      "label": "Widget Header Title",
+      "type": "text",
+      "default": "Library Viewing Stats",
+      "group": "Content",
+      "layout": "full"
+    }
+  ]
+}

@@ -1,0 +1,41 @@
+{
+  "id": "download-queue",
+  "name": "Download Queue",
+  "category": "Integrations",
+  "icon": "downloading",
+  "settings": [
+    {
+      "name": "title",
+      "label": "Widget Header Title",
+      "type": "text",
+      "default": "Active Downloads",
+      "group": "Content",
+      "layout": "full"
+    },
+    {
+      "name": "service_type",
+      "label": "Service",
+      "type": "select",
+      "default": "Sonarr",
+      "options": ["Sonarr", "Radarr"],
+      "group": "Configuration",
+      "layout": "half"
+    },
+    {
+      "name": "api_url",
+      "label": "Service API URL",
+      "type": "text",
+      "default": "http://localhost:8989",
+      "group": "Configuration",
+      "layout": "full"
+    },
+    {
+      "name": "api_key",
+      "label": "API Key",
+      "type": "text",
+      "default": "",
+      "group": "Configuration",
+      "layout": "full"
+    }
+  ]
+}
