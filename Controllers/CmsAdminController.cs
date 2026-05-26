@@ -80,14 +80,12 @@ namespace JellyCMS.Controllers
                     return NotFound("Page not found.");
                 }
 
-                // Check slug uniqueness (excluding current page)
                 var exists = await _dbContext.Pages.AnyAsync(p => p.Slug.ToLower() == cleanSlug && p.Id != page.Id);
                 if (exists)
                 {
                     return BadRequest("Slug is already in use by another page.");
                 }
 
-                // Evict cache for old slug
                 _pageCompiler.EvictCache(page.Slug);
 
                 page.Title = model.Title;
@@ -100,7 +98,6 @@ namespace JellyCMS.Controllers
             }
             else
             {
-                // Check slug uniqueness
                 var exists = await _dbContext.Pages.AnyAsync(p => p.Slug.ToLower() == cleanSlug);
                 if (exists)
                 {
@@ -122,7 +119,6 @@ namespace JellyCMS.Controllers
 
             await _dbContext.SaveChangesAsync();
 
-            // Evict cache for new/updated slug
             _pageCompiler.EvictCache(cleanSlug);
 
             return Ok(page);
@@ -142,8 +138,6 @@ namespace JellyCMS.Controllers
 
             return Ok(new { success = true });
         }
-
-        // ── Global Settings CRUD ────────────────────────────────────────────
 
         [HttpGet("settings")]
         public async Task<IActionResult> GetSettings()
@@ -183,7 +177,6 @@ namespace JellyCMS.Controllers
             _dbContext.GlobalSettings.Update(settings);
             await _dbContext.SaveChangesAsync();
 
-            // Evict cache for all pages since global styles changed
             var pages = await _dbContext.Pages.ToListAsync();
             foreach (var page in pages)
             {
@@ -192,8 +185,6 @@ namespace JellyCMS.Controllers
 
             return Ok(settings);
         }
-
-        // ── Blocks Catalog & Uninstall ──────────────────────────────────────
 
         [HttpGet("blocks")]
         public IActionResult GetBlocks()
@@ -257,8 +248,6 @@ namespace JellyCMS.Controllers
                 return StatusCode(500, ex.Message);
             }
         }
-
-        // ── Marketplace / Repositories ──────────────────────────────────────
 
         [HttpGet("marketplace")]
         public async Task<IActionResult> GetMarketplaceBlocks()
@@ -375,8 +364,6 @@ namespace JellyCMS.Controllers
             }
         }
     }
-
-    // ── Request Models ──────────────────────────────────────────────────────
 
     public class PageSaveModel
     {
